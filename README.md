@@ -67,3 +67,21 @@ Runs on an EC2 instance (port 3001) with a MySQL database on Amazon RDS. The dat
 - A shared landline or family email would be treated as redundant, because phone and email are treated as unique per person.
 - Two simultaneous submissions that differ in email and phone but have near-identical names in the same city can both be stored. Only email and phone are enforced by the database.
 - Traffic is plain HTTP and access is controlled by a single shared API key. A production system would use HTTPS and per-user credentials.
+
+## Test evidence
+
+**Sample dataset: 12 records classified (4 unique, 1 false positive, 5 redundant, 2 invalid)**
+
+<img src="docs/bulk-results.png" width="600">
+
+**Only the 5 verified records were stored in the database**
+
+<img src="docs/stored-records.png" width="600">
+
+**All 15 tests passing, including 5 simultaneous identical submissions (exactly 1 stored)**
+
+<img src="docs/test-results.png" width="600">
+
+**Live health check on the EC2 server**
+
+<img src="docs/health-check.png" width="600">
